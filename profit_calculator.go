@@ -14,7 +14,7 @@ func main() {
 	earningBeforeTax, earningAfterTax, ratio   := calculateValues(revenue, expense, taxRate)
 
 	//Printing Output
-	fmt.Printf("Your earnings before tax is: %v\nand your earnings after tax (profit) is: %v\nwhereas the profit to earning ratio is: %f", earningBeforeTax, earningAfterTax, ratio)
+	fmt.Printf("Your earnings before tax is: %v\nand your earnings after tax (profit) is: %v\nwhereas the profit to earning ratio is: %.2f", earningBeforeTax, earningAfterTax, ratio)
 }
 
 func printAndScan(text string, numberToScan float64) (float64) {
