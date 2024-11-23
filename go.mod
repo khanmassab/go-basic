@@ -1,3 +1,3 @@
-module massabatic.com/go-basics
+module massabatic.com/bank
 
 go 1.21.5
