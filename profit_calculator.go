@@ -18,7 +18,7 @@ func main() {
 	//Calculation
 	earningBeforeTax   := revenue - expense
 	earningAfterTax    := earningBeforeTax * (1 - taxRate/100)
-	ratio := earningBeforeTax / earningAfterTax
+	ratio              := earningBeforeTax / earningAfterTax
 
 	//Printing Output
 	fmt.Printf("Your earnings before tax is: %v\nand your earnings after tax (profit) is: %v\nwhereas the profit to earning ratio is: %v", earningBeforeTax, earningAfterTax, ratio)
