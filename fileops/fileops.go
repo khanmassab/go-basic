@@ -12,7 +12,7 @@ func WriteBalanceToFile(input float64, fileName string){
 	os.WriteFile(fileName,[]byte(inputText), 0644)
 }
   
- func GetBalanceFromTheFile(fileName string) (float64, error){
+func GetBalanceFromTheFile(fileName string) (float64, error){
 	data, err := os.ReadFile(fileName)
 
 	if err != nil {
