@@ -27,7 +27,7 @@ func main (){
 	
 			if deposit <= 0 {
 				fmt.Println("Invalid Input")
-				return
+				continue
 			}
 	
 			amount  += deposit
@@ -39,12 +39,12 @@ func main (){
 	
 			if withdrawalAmount > amount {
 				fmt.Println("Error! Your balance is low")
-				return
+				continue
 			} 
 	
 			if withdrawalAmount < 0 {
 				fmt.Println("Invalid amount!")
-				return
+				continue
 			}
 	
 			amount -= withdrawalAmount
@@ -52,7 +52,8 @@ func main (){
 	
 		} else {
 			fmt.Println("Goodbye!")
-      return
+      break
 		}
 	}
+  fmt.Print("Thanks for choosing our bank")
 }
