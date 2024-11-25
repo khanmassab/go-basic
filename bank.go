@@ -1,37 +1,16 @@
 package main
 
 import (
-	"errors"
 	"fmt"
-	"os"
-	"strconv"
+
+	"massabatic.com/bank/fileops"
 )
 
 const accountBalanceFile = "balance.txt"
 
-func writeBalanceToFile(balance float64){
-  balanceText := fmt.Sprint(balance)
-  os.WriteFile(accountBalanceFile,[]byte(balanceText), 0644)
-}
-
-func getBalanceFromTheFile() (float64, error){
-  data, err := os.ReadFile(accountBalanceFile)
-
-  if err != nil {
-    return 1000, errors.New("error finding the balance file")
-  }
-  balanceText := string(data)
-  balance, err := strconv.ParseFloat(balanceText, 64)
-
-  if err != nil {
-    return 1000, errors.New("error reading the balance file")
-  }
-  return balance, nil
-}
-
 func main (){
 	var choice int
-	amount, err := getBalanceFromTheFile()
+	amount, err := fileops.GetBalanceFromTheFile(accountBalanceFile)
 
   if err != nil {
     fmt.Println("error")
@@ -61,7 +40,7 @@ func main (){
 			}
 	
 			amount  += deposit
-      writeBalanceToFile(amount)
+      fileops.WriteBalanceToFile(amount, accountBalanceFile)
 			fmt.Println("Deposit successful! Your new is balance is: ", amount)
     case 3:
       var withdrawalAmount float64
@@ -79,7 +58,7 @@ func main (){
 			}
 	
 			amount -= withdrawalAmount
-      writeBalanceToFile(amount)
+      fileops.WriteBalanceToFile(amount, accountBalanceFile)
 			fmt.Println("Money withdrawn! New balance: ", amount)
     default:
       fmt.Println("Goodbye!")
