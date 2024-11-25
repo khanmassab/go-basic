@@ -37,18 +37,13 @@ func main (){
     fmt.Println("error")
     fmt.Println(err)
     fmt.Println("-----------")
-    panic("san't continue sorry")
+    // panic("can't continue sorry")
   }
 
 	fmt.Println("Welcome to Go Bank")
-	fmt.Println("What do you want to do?")
 
   for{
-    fmt.Println("1. Check Balance")
-    fmt.Println("2. Make Deposit")
-    fmt.Println("3. Withdraw Amount")
-    fmt.Println("4. Exit")
-  
+    presentOptions()
     fmt.Print("Your choice: ")
     fmt.Scan(&choice)
 
