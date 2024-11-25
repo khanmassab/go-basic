@@ -8,15 +8,16 @@ func main (){
 
 	fmt.Println("Welcome to Go Bank")
 	fmt.Println("What do you want to do?")
-	fmt.Println("1. Check Balance")
-	fmt.Println("2. Make Deposit")
-	fmt.Println("3. Withdraw Amount")
-	fmt.Println("4. Exit")
 
-	fmt.Print("Your choice: ")
-	fmt.Scan(&choice)
+	for{
+    fmt.Println("1. Check Balance")
+    fmt.Println("2. Make Deposit")
+    fmt.Println("3. Withdraw Amount")
+    fmt.Println("4. Exit")
+  
+    fmt.Print("Your choice: ")
+    fmt.Scan(&choice)
 
-	for i=0; i <200; i++ {
 		if choice == 1{
 			fmt.Print("Your balance is: ", amount)
 		} else if choice == 2 {
@@ -25,7 +26,7 @@ func main (){
 			fmt.Scan(&deposit)
 	
 			if deposit <= 0 {
-				fmt.Print("Invalid Input")
+				fmt.Println("Invalid Input")
 				return
 			}
 	
@@ -37,12 +38,12 @@ func main (){
 			fmt.Scan(&withdrawalAmount)
 	
 			if withdrawalAmount > amount {
-				fmt.Print("Error! Your balance is low")
+				fmt.Println("Error! Your balance is low")
 				return
 			} 
 	
 			if withdrawalAmount < 0 {
-				fmt.Print("Invalid amount!")
+				fmt.Println("Invalid amount!")
 				return
 			}
 	
@@ -50,7 +51,8 @@ func main (){
 			fmt.Print("Money withdrawn! New balance: ", amount)
 	
 		} else {
-			fmt.Print("Goodbye!")
+			fmt.Println("Goodbye!")
+      return
 		}
 	}
-}n
+}
