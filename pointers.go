@@ -6,12 +6,17 @@ func main(){
 	age := 32
 
 	agePointer := &age
-
 	fmt.Println("Age: ", *agePointer)
-	adultYears := getAdultYears(agePointer)
-	fmt.Println("Adult Years: ", adultYears)
+
+	setAdultYears(agePointer)
+	fmt.Println("Adult Years: ", getAge(agePointer))
 }
 
-func getAdultYears(age *int) int{
-	return *age - 18;
+func getAge(age *int) int{
+	return *age;
+}
+
+func setAdultYears(age *int){
+	//Deference a pointer i.e. &age
+	*age = *age - 18
 }
