@@ -41,7 +41,7 @@ func main() {
 	storeValue(formattedOutput)
 
 	//Printing Output
-	fmt.Printf(formattedOutput)
+	fmt.Println(formattedOutput)
 }
 
 func printAndScan(text string, numberToScan float64) (float64) {
