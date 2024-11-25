@@ -12,6 +12,17 @@ type user struct {
 	createdAt time.Time
 }
 
+// (u user) is a Receiver (argument)
+func (u user) outputUserData(){
+	fmt.Println(u.firstName, u.lastName, u.birthDate, u.createdAt)
+}
+
+//Mutation requires a pointer in Receiver Argument
+func (u *user) clearUserName (){
+	u.firstName = ""
+	u.lastName = ""
+}
+
 func main() {
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
@@ -24,11 +35,9 @@ func main() {
 		createdAt: time.Now(),
 	}
 
-	outputUserData(&appUser)
-}
-
-func outputUserData(u *user) {
-	fmt.Print(u.firstName, u.lastName, u.birthDate, u.birthDate)
+	appUser.outputUserData()
+	appUser.clearUserName()
+	appUser.outputUserData()
 }
 
 func getUserData(promptText string) string {
