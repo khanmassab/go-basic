@@ -15,15 +15,15 @@ func writeBalanceToFile(balance float64){
 }
 
 func getBalanceFromTheFile() (float64, error){
-  data, error := os.ReadFile(accountBalanceFile)
+  data, err := os.ReadFile(accountBalanceFile)
 
-  if error != nil {
+  if err != nil {
     return 1000, errors.New("error finding the balance file")
   }
   balanceText := string(data)
-  balance, error := strconv.ParseFloat(balanceText, 64)
+  balance, err := strconv.ParseFloat(balanceText, 64)
 
-  if error != nil {
+  if err != nil {
     return 1000, errors.New("error reading the balance file")
   }
   return balance, nil
@@ -31,7 +31,14 @@ func getBalanceFromTheFile() (float64, error){
 
 func main (){
 	var choice int
-	amount, _ := getBalanceFromTheFile()
+	amount, err := getBalanceFromTheFile()
+
+  if err != nil {
+    fmt.Println("error")
+    fmt.Println(err)
+    fmt.Println("-----------")
+    panic("san't continue sorry")
+  }
 
 	fmt.Println("Welcome to Go Bank")
 	fmt.Println("What do you want to do?")
