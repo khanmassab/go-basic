@@ -16,39 +16,41 @@ func main (){
 	fmt.Print("Your choice: ")
 	fmt.Scan(&choice)
 
-	if choice == 1{
-		fmt.Print("Your balance is: ", amount)
-	} else if choice == 2 {
-		var deposit float64
-		fmt.Print("Enter the amount you want to deposit: ")
-		fmt.Scan(&deposit)
-
-		if deposit <= 0 {
-			fmt.Print("Invalid Input")
-			return
+	for i=0; i <200; i++ {
+		if choice == 1{
+			fmt.Print("Your balance is: ", amount)
+		} else if choice == 2 {
+			var deposit float64
+			fmt.Print("Enter the amount you want to deposit: ")
+			fmt.Scan(&deposit)
+	
+			if deposit <= 0 {
+				fmt.Print("Invalid Input")
+				return
+			}
+	
+			amount  += deposit
+			fmt.Print("Deposit successful! Your new is balance is: ", amount)
+		} else if  choice == 3 {
+			var withdrawalAmount float64
+			fmt.Print("Enter the amount you want to withdraw: ")
+			fmt.Scan(&withdrawalAmount)
+	
+			if withdrawalAmount > amount {
+				fmt.Print("Error! Your balance is low")
+				return
+			} 
+	
+			if withdrawalAmount < 0 {
+				fmt.Print("Invalid amount!")
+				return
+			}
+	
+			amount -= withdrawalAmount
+			fmt.Print("Money withdrawn! New balance: ", amount)
+	
+		} else {
+			fmt.Print("Goodbye!")
 		}
-
-		amount  += deposit
-		fmt.Print("Deposit successful! Your new is balance is: ", amount)
-	} else if  choice == 3 {
-		var withdrawalAmount float64
-		fmt.Print("Enter the amount you want to withdraw: ")
-		fmt.Scan(&withdrawalAmount)
-
-		if withdrawalAmount > amount {
-			fmt.Print("Error! Your balance is low")
-			return
-		} 
-
-		if withdrawalAmount < 0 {
-			fmt.Print("Invalid amount!")
-			return
-		}
-
-		amount -= withdrawalAmount
-		fmt.Print("Money withdrawn! New balance: ", amount)
-
-	} else {
-		fmt.Print("Goodbye!")
 	}
 }n
