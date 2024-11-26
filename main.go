@@ -1,23 +1,23 @@
 package main
 
 import (
-	"errors"
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 
-	"massabatic.com/go-basics/note"
+	"massabatic.com/go-basics/notes"
 )
 
 func main() {
 	noteTitle, noteContent := getNoteData()
 
-	var note note
-	userNote, err := note.New(noteTitle, noteContent)
+	userNote, err := notes.New(noteTitle, noteContent)
 	if err != nil {
 		fmt.Print(err)
 		return
 	}
-
-	
+	userNote.Display()
 }
 
 func getNoteData () (string, string) {
@@ -25,14 +25,21 @@ func getNoteData () (string, string) {
 	noteContent := getUserInput("Input the note content: ")
 
 	return noteTitle, noteContent
-
 }
 
 func getUserInput(str string) string {
 	fmt.Print(str)
 
-	var value string
-	fmt.Scanln(&value)
+	reader := bufio.NewReader(os.Stdin)
+	text, err := reader.ReadString('\n')
+
+	if err != nil {
+		return ""
+	}
+
+	text = strings.TrimSuffix(text, "\n")
+	//for windows line break = \r\n
+	text = strings.TrimSuffix(text, "\r")
 	
-	return value, 
+	return text
 }
