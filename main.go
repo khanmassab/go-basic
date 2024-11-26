@@ -31,18 +31,23 @@ func main() {
 
 	userTodo.Display()
 	err = userTodo.Save()
+
 	if err != nil {
-		fmt.Println(err)
+		fmt.Print("Saving Todo Failed")
 		return
 	}
+
+	fmt.Print("To do saved successfully")
 
 	userNote.Display()
 	err = userNote.Save()
 
 	if err != nil {
-		fmt.Println(err)
+		fmt.Print("Saving Note Failed")
 		return
 	}
+	
+	fmt.Print("Note saved successfully")
 }
 
 func getNoteData () (string, string) {
