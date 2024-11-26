@@ -18,6 +18,12 @@ func main() {
 		return
 	}
 	userNote.Display()
+	err = userNote.Save()
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 }
 
 func getNoteData () (string, string) {
@@ -29,7 +35,7 @@ func getNoteData () (string, string) {
 
 func getUserInput(str string) string {
 	fmt.Print(str)
-
+	
 	reader := bufio.NewReader(os.Stdin)
 	text, err := reader.ReadString('\n')
 
