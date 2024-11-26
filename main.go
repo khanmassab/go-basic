@@ -10,6 +10,10 @@ import (
 	"massabatic.com/go-basics/todo"
 )
 
+type saver interface {
+	Save() error
+}
+
 func main() {
 	noteTitle, noteContent := getNoteData()
 
@@ -30,24 +34,31 @@ func main() {
 	}
 
 	userTodo.Display()
-	err = userTodo.Save()
+	err = saveData(userTodo)
 
 	if err != nil {
 		fmt.Print("Saving Todo Failed")
 		return
 	}
-
 	fmt.Print("To do saved successfully")
 
 	userNote.Display()
-	err = userNote.Save()
+	err = saveData(userNote)
 
 	if err != nil {
 		fmt.Print("Saving Note Failed")
 		return
 	}
-	
 	fmt.Print("Note saved successfully")
+}
+
+func saveData(data saver) error {
+	err := data.Save()
+
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func getNoteData () (string, string) {
