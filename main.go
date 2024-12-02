@@ -7,23 +7,58 @@ import (
 	"strings"
 
 	"massabatic.com/go-basics/notes"
+	"massabatic.com/go-basics/todo"
 )
+
+type saver interface {
+	Save() error
+}
 
 func main() {
 	noteTitle, noteContent := getNoteData()
 
+	noteText := getUserInput("Input ToDo Text: ")
+
 	userNote, err := notes.New(noteTitle, noteContent)
+
 	if err != nil {
 		fmt.Print(err)
 		return
 	}
-	userNote.Display()
-	err = userNote.Save()
+
+	userTodo, err := todo.New(noteText)
 
 	if err != nil {
-		fmt.Println(err)
+		fmt.Print(err)
 		return
 	}
+
+	userTodo.Display()
+	err = saveData(userTodo)
+
+	if err != nil {
+		fmt.Print("Saving Todo Failed")
+		return
+	}
+	fmt.Print("To do saved successfully")
+
+	userNote.Display()
+	err = saveData(userNote)
+
+	if err != nil {
+		fmt.Print("Saving Note Failed")
+		return
+	}
+	fmt.Print("Note saved successfully")
+}
+
+func saveData(data saver) error {
+	err := data.Save()
+
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func getNoteData () (string, string) {
@@ -35,7 +70,7 @@ func getNoteData () (string, string) {
 
 func getUserInput(str string) string {
 	fmt.Print(str)
-	
+
 	reader := bufio.NewReader(os.Stdin)
 	text, err := reader.ReadString('\n')
 
