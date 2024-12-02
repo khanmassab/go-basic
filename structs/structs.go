@@ -1,9 +1,9 @@
-package main
+package structs
 
 import (
 	"fmt"
 
-	"massabatic.com/go-basics/user"
+	"massabatic.com/bank/user"
 )
 
 func main() {

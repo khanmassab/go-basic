@@ -1,4 +1,4 @@
-package main
+package bank
 
 import "fmt"
 
@@ -8,4 +8,4 @@ func presentOptions(){
 	fmt.Println("2. Make Deposit")
 	fmt.Println("3. Withdraw Amount")
 	fmt.Println("4. Exit")
-  }
+}

@@ -1,10 +1,10 @@
-package main
+package bank
 
 import (
 	"fmt"
 
 	"github.com/pallinder/go-randomdata"
-	"massabatic.com/bank/fileops"
+	"massabatic.com/bank/bank/fileops"
 )
 
 const accountBalanceFile = "balance.txt"

@@ -1,4 +1,4 @@
-package main
+package profit_controller
 
 import (
 	"errors"

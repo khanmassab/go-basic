@@ -1,4 +1,4 @@
-package main
+package investment_controller
 
 import (
 	"fmt"

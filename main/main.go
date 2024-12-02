@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"massabatic.com/go-basics/notes"
-	"massabatic.com/go-basics/todo"
+	"massabatic.com/bank/notes"
+	"massabatic.com/bank/todo"
 )
 
 type saver interface {
